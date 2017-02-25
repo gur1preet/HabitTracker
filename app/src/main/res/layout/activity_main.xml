@@ -18,14 +18,14 @@
             style="@style/EditorFieldStyle" />
 
         <EditText
-            android:id="@+id/edit_pet_breed"
+            android:id="@+id/frequency_edit"
             android:hint="@string/frequency"
-            android:inputType="textCapWords"
+            android:inputType="number"
             style="@style/EditorFieldStyle" />
     </LinearLayout>
 
     <TextView
-        android:id="@+id/text_view_pet"
+        android:id="@+id/text_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/edit_layout"
