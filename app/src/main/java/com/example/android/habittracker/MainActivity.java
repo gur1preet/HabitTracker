@@ -50,21 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private void displayDatabase(){
         mDBHelper = new HabitDBHelper(this);
 
-        SQLiteDatabase db = mDBHelper.getReadableDatabase();
-
-        String[] projection = {
-                HabitContract.HabitEntry._ID,
-                HabitContract.HabitEntry.COLUMN_HABIT_NAME,
-                HabitContract.HabitEntry.COLLUMN_HABIT_FREQUENCY};
-
-        Cursor cursor = db.query(
-                HabitContract.HabitEntry.TABLE_NAME,
-                projection,
-                null,
-                null,
-                null,
-                null,
-                null);
+        Cursor cursor = readDatabase();
 
         TextView display = (TextView)findViewById(R.id.text_view);
 
@@ -91,6 +77,25 @@ public class MainActivity extends AppCompatActivity {
         }finally {
             cursor.close();
         }
+    }
+
+    private Cursor readDatabase(){
+        Cursor temp;
+        SQLiteDatabase db = mDBHelper.getReadableDatabase();
+
+        String[] projection = {
+                HabitContract.HabitEntry._ID,
+                HabitContract.HabitEntry.COLUMN_HABIT_NAME,
+                HabitContract.HabitEntry.COLLUMN_HABIT_FREQUENCY};
+        temp = db.query(
+                HabitContract.HabitEntry.TABLE_NAME,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                null);
+        return temp;
     }
 
     private void insertHabit(){
